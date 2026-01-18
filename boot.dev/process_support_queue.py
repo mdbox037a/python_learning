@@ -1,8 +1,4 @@
 def process_support_queue(current_queue: list, new_customers: list, to_serve: int):
-    """current_queue: list of strings
-    new_customers: list of strings
-    to_serve: integer"""
-
     working_queue = current_queue
     working_queue.extend(new_customers)
     served_customers = []
