@@ -1,20 +1,11 @@
 import requests
 import sys
 import os
-import json
 import nvdlib
 from dotenv import load_dotenv
 
 
 load_dotenv()
-
-cve_id = ""
-ubu_prio = ""
-nvd_severity = ""
-headers = {"user-agent": "matthew box/quick-cve.py (github.com/mdbox037a)"}
-ubu_url = "https://ubuntu.com/security/cves"
-ubu_params = {"cve_id": cve_id}
-
 
 print(
     "NOTICE: This product uses the NVD API but is not endorsed or certified by the NVD."
@@ -27,8 +18,12 @@ for line in sys.stdin:
     cve_id = line.strip()
 
     if cve_id:
+        # ubuntu priority
         try:
             target_url = f"https://ubuntu.com/security/cves/{cve_id.upper()}.json"
+            headers = {"user-agent": "matthew box/quick-cve.py (github.com/mdbox037a)"}
+            ubu_url = "https://ubuntu.com/security/cves"
+            ubu_params = {"cve_id": cve_id}
 
             ubusec_data = requests.get(target_url, headers=headers, timeout=30)
 
@@ -40,6 +35,7 @@ for line in sys.stdin:
         except requests.Timeout:
             ubu_prio = "timeout"
 
+        # nvd severity
         try:
             nvd_api_key = os.getenv("NVD_API_KEY")
             if not nvd_api_key:
@@ -51,8 +47,7 @@ for line in sys.stdin:
             if nvd_data:
                 cve = nvd_data[0]
                 nvd_severity = cve.score[2]
-        except Exception as e:
+        except Exception:
             nvd_severity = "error"
-            print(e)
 
     print(f"{cve_id.upper():<15}: {ubu_prio:<16}: {nvd_severity:<10}")
