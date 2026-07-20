@@ -3,7 +3,7 @@ import sys
 from typing import NoReturn
 
 
-def open_kernel_ml() -> NoReturn:
+def open_ubuntu_kernel_ml() -> NoReturn:
     """
     Opens the Ubuntu kernel team mailing list for the current month and year in a browser
     """
@@ -21,4 +21,4 @@ def open_kernel_ml() -> NoReturn:
 
 
 if __name__ == "__main__":
-    open_kernel_ml()
+    open_ubuntu_kernel_ml()
