@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-# this software up to v1.0.1 written by Tim Whisonant
+# this software up to v1.0.1 (here, commit 92d14cde5f0f46b4f101fab3a1c33711e7b04078) written by Tim Whisonant
 # used and adapted with permission
 
 import argparse
