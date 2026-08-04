@@ -5,7 +5,7 @@ from typing import NoReturn
 
 def open_ubuntu_kernel_ml() -> NoReturn:
     """
-    Opens the Ubuntu kernel team mailing list for the current month and year in a browser
+    Opens the Ubuntu kernel team mailing list for the current month and year in default browser
     """
     try:
         date = subprocess.run(["date", "+%Y %B"], capture_output=True, text=True)
