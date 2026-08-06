@@ -2,7 +2,7 @@ import subprocess
 
 
 def check_name():
-    instance_name = "noblefipster05"
+    instance_name = "nobletester"
     check = subprocess.run(
         ["lxc", "ls", "--all-projects", "-c", "n", "-f", "csv", instance_name],
         capture_output=True,
